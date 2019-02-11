@@ -1,0 +1,56 @@
+
+# [ --------------------------------------------------------------------------------------- ] #
+#   -= CustomMobDrops =-                                                                      #
+#   -= Author: DevSnox =-                                                                     #
+#   -= Version: 1.1 =-                                                                        #
+#   -= Contact: E-mail: me.devsnox@gmail.com Skype: live:chaos3729 Discord: DevSnox#5642 =-   #
+#   -= Informations:                                                                          #
+#   -= Please send Errors per PM on spigotmc.org =-                                           #
+#   -= When you use this Plugin please rate it on spigotmc.org =-                             #
+# [ --------------------------------------------------------------------------------------- ] #
+
+
+# { BASIC - CONFIGURATION } #
+
+  # { HELP: Dont modify this value } #
+  config-version: 1
+
+# { --------------------- } #
+
+# { MESSAGES } #
+
+  # { HELP: The displayname of the money item PLACEHOLDER: %amount% } #
+  money: "&e%amount% &6&l$"
+
+  # { HELP: The message shown if picked up a money item PLACEHOLDER: %amount% } #
+  money-received: "&eYou have received &6%amount% &e$!"
+
+# { -------- } #
+
+
+# { DROP - CONFIGURATION } #
+
+  # { HELP: The DropType to be used, you can use 'ONE' or 'MULTIPLE'.                    } #
+  # { IF YOU SET IT TO 'ONE' IT WILL ONLY SELECT ONE ITEM / MONEY REWARD TO BE AFFECTED! } #
+  # { OR IF YOU SET TO 'MULTIPLE' MORE THAN ONE REWARD HAS THE CHANCE TO SPAWN!          } #
+  # { Default: 'MULTIPLE'                                                                } #
+  drop-type: MULTIPLE
+
+  mobs:
+    PIG: # { HELP: The type of Entity - here a list: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html } #
+      drops:
+        ITEM:
+          material: WOOD # { HELP: The item / material name - here a list: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html } #
+          chance: 50 # { HELP: The percentage of chance the entity drop this item } #
+          amount: 3 # { HELP: The amount of items to drop } #
+        MONEY: # { HELP: Economy can be used! } #
+          chance: 30 # { HELP: The percentage of chance the player can get the money } #
+          amount: 50 # { HELP: The amount of money to add to the account! } #
+    SHEEP:
+      drops:
+        ITEM:
+          material: EGG
+          chance: 50
+          amount: 2
+
+# { ------------------- } #
