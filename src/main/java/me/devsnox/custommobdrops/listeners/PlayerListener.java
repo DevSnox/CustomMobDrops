@@ -52,6 +52,8 @@ public class PlayerListener implements Listener {
             Player player = ((Player) event.getWhoClicked()).getPlayer();
             ItemStack itemStack = event.getCurrentItem();
 
+            if(itemStack == null) return
+            
             if(itemStack.getType() == Material.GOLD_NUGGET) {
                 if(itemStack.hasItemMeta()) {
                     if(itemStack.getItemMeta().hasDisplayName()) {
