@@ -26,25 +26,17 @@ public class PlayerListener implements Listener
 	{
 		Player player = event.getPlayer();
 		ItemStack itemStack = event.getItem().getItemStack();
-		if (itemStack.getType() == Material.GOLD_NUGGET)
+		if (itemStack.getType() == Material.GOLD_NUGGET &&
+				itemStack.hasItemMeta() &&
+				itemStack.getItemMeta().hasDisplayName() &&
+				itemStack.getItemMeta().getDisplayName().endsWith("§6§l$"))
 		{
-			if (itemStack.hasItemMeta())
+			NBTItem nbtItem = new NBTItem(itemStack);
+			if (nbtItem.hasKey("money"))
 			{
-				if (itemStack.getItemMeta().hasDisplayName())
-				{
-					if (itemStack.getItemMeta().getDisplayName().endsWith("§6§l$"))
-					{
-						NBTItem nbtItem = new NBTItem(itemStack);
-						if (nbtItem.hasKey("money"))
-						{
-							event.setCancelled(true);
-							event.getItem().remove();
-							int amount = nbtItem.getInteger("money");
-							this.mobManager.getEconomy().depositPlayer(player, amount * itemStack.getAmount());
-							player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.mobManager.getMobConfiguration().getMoneyReceived().replaceAll("%amount%", String.valueOf(amount))));
-						}
-					}
-				}
+				event.setCancelled(true);
+				event.getItem().remove();
+				action(player, itemStack, nbtItem);
 			}
 		}
 	}
@@ -56,31 +48,27 @@ public class PlayerListener implements Listener
 		{
 			Player player = ((Player) event.getWhoClicked()).getPlayer();
 			ItemStack itemStack = event.getCurrentItem();
-			if (itemStack == null)
+			if (itemStack != null &&
+					itemStack.getType() == Material.GOLD_NUGGET &&
+					itemStack.hasItemMeta() &&
+					itemStack.getItemMeta().hasDisplayName() &&
+					itemStack.getItemMeta().getDisplayName().endsWith("§6§l$"))
 			{
-				return;
-			}
-			if (itemStack.getType() == Material.GOLD_NUGGET)
-			{
-				if (itemStack.hasItemMeta())
+				NBTItem nbtItem = new NBTItem(itemStack);
+				if (nbtItem.hasKey("money"))
 				{
-					if (itemStack.getItemMeta().hasDisplayName())
-					{
-						if (itemStack.getItemMeta().getDisplayName().endsWith("§6§l$"))
-						{
-							NBTItem nbtItem = new NBTItem(itemStack);
-							if (nbtItem.hasKey("money"))
-							{
-								event.setCancelled(true);
-								event.setCurrentItem(new ItemBuilder(Material.AIR, 1, false).build());
-								int amount = nbtItem.getInteger("money");
-								this.mobManager.getEconomy().depositPlayer(player, amount * itemStack.getAmount());
-								player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.mobManager.getMobConfiguration().getMoneyReceived().replaceAll("%amount%", String.valueOf(amount))));
-							}
-						}
-					}
+					event.setCancelled(true);
+					event.setCurrentItem(new ItemBuilder(Material.AIR, 1, false).build());
+					action(player, itemStack, nbtItem);
 				}
 			}
 		}
+	}
+	
+	private void action(Player player, ItemStack itemStack, NBTItem nbtItem)
+	{
+		int amount = nbtItem.getInteger("money");
+		this.mobManager.getEconomy().depositPlayer(player, amount * itemStack.getAmount());
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.mobManager.getMobConfiguration().getMoneyReceived().replaceAll("%amount%", String.valueOf(amount))));
 	}
 }
