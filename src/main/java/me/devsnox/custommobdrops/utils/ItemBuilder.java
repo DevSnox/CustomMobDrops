@@ -11,45 +11,49 @@ import java.util.ArrayList;
  * E-Mail: me.devsnox@gmail.com
  * Skype: DevSnox
  */
-public class ItemBuilder {
-
-    private Material material;
-    private int amount;
-    private byte durability;
-    private String displayName;
-    private ArrayList<String> lore;
-    //private String url;
-    private boolean unbreakable;
-
-    public ItemBuilder(Material material, int amount, boolean unbreakable) {
-        this.material = material;
-        this.amount = amount;
-        this.unbreakable = unbreakable;
-    }
-
-    public ItemBuilder(Material material, int amount, byte durability, boolean unbreakable) {
-        this.material = material;
-        this.amount = amount;
-        this.durability = durability;
-        this.unbreakable = unbreakable;
-    }
-
-    public ItemBuilder(Material material, int amount, byte durability, String displayName, boolean unbreakable) {
-        this.material = material;
-        this.amount = amount;
-        this.durability = durability;
-        this.displayName = displayName;
-        this.unbreakable = unbreakable;
-    }
-
-    public ItemBuilder(Material material, int amount, byte durability, String displayName, ArrayList<String> lore, boolean unbreakable) {
-        this.material = material;
-        this.amount = amount;
-        this.durability = durability;
-        this.displayName = displayName;
-        this.lore = lore;
-        this.unbreakable = unbreakable;
-    }
+public class ItemBuilder
+{
+	private final Material material;
+	private final int amount;
+	//private String url;
+	private final boolean unbreakable;
+	private byte durability;
+	private String displayName;
+	private ArrayList<String> lore;
+	
+	public ItemBuilder(Material material, int amount, boolean unbreakable)
+	{
+		this.material = material;
+		this.amount = amount;
+		this.unbreakable = unbreakable;
+	}
+	
+	public ItemBuilder(Material material, int amount, byte durability, boolean unbreakable)
+	{
+		this.material = material;
+		this.amount = amount;
+		this.durability = durability;
+		this.unbreakable = unbreakable;
+	}
+	
+	public ItemBuilder(Material material, int amount, byte durability, String displayName, boolean unbreakable)
+	{
+		this.material = material;
+		this.amount = amount;
+		this.durability = durability;
+		this.displayName = displayName;
+		this.unbreakable = unbreakable;
+	}
+	
+	public ItemBuilder(Material material, int amount, byte durability, String displayName, ArrayList<String> lore, boolean unbreakable)
+	{
+		this.material = material;
+		this.amount = amount;
+		this.durability = durability;
+		this.displayName = displayName;
+		this.lore = lore;
+		this.unbreakable = unbreakable;
+	}
 
     /*public ItemBuilder(String url, String displayName, ArrayList<String> lore, boolean unbreakable) {
         this.material = Material.SKULL;
@@ -59,11 +63,12 @@ public class ItemBuilder {
         this.lore = lore;
         this.unbreakable = unbreakable;
     }*/
-
-    public ItemStack build() {
-        ItemStack itemStack = new ItemStack(this.material, this.amount, durability);
-        ItemMeta itemMeta = null;
-
+	
+	public ItemStack build()
+	{
+		ItemStack itemStack = new ItemStack(this.material, this.amount, this.durability);
+		ItemMeta itemMeta = itemStack.getItemMeta();
+		
         /*if(url != null) {
             itemStack = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 
@@ -85,24 +90,22 @@ public class ItemBuilder {
             }
             itemStack.setItemMeta(headMeta);
         }*/
-
-        if(displayName != null) {
-            itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName(this.displayName);
-        }
-
-        if(lore != null) {
-            itemMeta.setLore(this.lore);
-        }
-
-        if(this.unbreakable) {
-            itemMeta.spigot().setUnbreakable(true);
-        }
-
-        if(itemMeta != null) {
-            itemStack.setItemMeta(itemMeta);
-        }
-
-        return itemStack;
-    }
+		if (this.displayName != null)
+		{
+			itemMeta.setDisplayName(this.displayName);
+		}
+		if (this.lore != null)
+		{
+			itemMeta.setLore(this.lore);
+		}
+		if (this.unbreakable)
+		{
+			itemMeta.spigot().setUnbreakable(true);
+		}
+		if (itemMeta != null)
+		{
+			itemStack.setItemMeta(itemMeta);
+		}
+		return itemStack;
+	}
 }
