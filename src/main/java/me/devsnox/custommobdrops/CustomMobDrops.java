@@ -25,6 +25,10 @@ public class CustomMobDrops extends JavaPlugin {
             System.out.println(ChatColor.RED + "- Sucessfully hooked into Vault!");
         } else {
             System.out.println(ChatColor.RED + "- Failed to hook into Vault!");
+            System.out.println(ChatColor.RED + "- Plugin unloading - please install Vault!");
+            getPluginLoader().disablePlugin(this);
+
+            return;
         }
 
         this.saveResource("config.yml", false);
