@@ -2,7 +2,7 @@ name: Java CI
 
 on:
   push:
-    branches: *-DEVELOPMENT
+    branches: '*-DEVELOPMENT'
 
 jobs:
   build:
