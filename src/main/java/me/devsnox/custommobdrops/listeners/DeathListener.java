@@ -1,6 +1,6 @@
 package me.devsnox.custommobdrops.listeners;
 
-import de.tr7zw.itemnbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import me.devsnox.custommobdrops.drops.Drop;
 import me.devsnox.custommobdrops.drops.DropType;
 import me.devsnox.custommobdrops.drops.ItemDrop;

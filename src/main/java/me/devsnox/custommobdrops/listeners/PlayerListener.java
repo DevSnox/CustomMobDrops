@@ -1,6 +1,6 @@
 package me.devsnox.custommobdrops.listeners;
 
-import de.tr7zw.itemnbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import me.devsnox.custommobdrops.mob.MobManager;
 import me.devsnox.custommobdrops.utils.ItemBuilder;
 import org.bukkit.ChatColor;

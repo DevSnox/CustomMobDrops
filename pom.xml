@@ -42,34 +42,14 @@
             <version>68f14eca20</version>
         </dependency>
         <dependency>
-            <groupId>de.tr7zw</groupId>
-            <artifactId>itembntapi</artifactId>
-            <version>1.7-SNAPSHOT</version>
+            <groupId>com.github.tr7zw.Item-NBT-API</groupId>
+            <artifactId>item-nbt-api</artifactId>
+            <version>2.2.0</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                        <configuration>
-                            <file>libraries/Item-NBT-API.jar</file>
-                            <groupId>de.tr7zw</groupId>
-                            <artifactId>itembntapi</artifactId>
-                            <version>1.7-SNAPSHOT</version>
-                            <packaging>jar</packaging>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -94,9 +74,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
