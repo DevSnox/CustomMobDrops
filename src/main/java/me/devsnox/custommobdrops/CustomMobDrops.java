@@ -34,7 +34,7 @@ public class CustomMobDrops extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new DeathListener(this.mobManager), this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this.mobManager), this);
 
-        new Metrics(this);
+        new Metrics(this, 2295);
     }
 
 
