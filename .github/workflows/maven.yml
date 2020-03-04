@@ -21,4 +21,4 @@ jobs:
         # Artifact name
         name: Dev-Build
         # Directory containing files to upload
-        path: dev-builds/
+        path: target/
